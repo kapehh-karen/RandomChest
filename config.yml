@@ -1,0 +1,27 @@
+# Logging
+Debug: false
+
+# Chests
+ChestName1:
+    GoldBow1:
+        Id: 261
+        Data: 0
+        Name: "§eБоевой лук Грозы мертвецов"
+        Probability: 4.0
+        MinQuantity: 1
+        MaxQuantity: 1
+        Enchantments:
+            1:
+                Enchantment: ARROW_DAMAGE
+                Level: 1
+                Probability: 100
+            2:
+                Enchantment: ARROW_FIRE
+                Level: 2
+                Probability: 50
+    IronSpare3:
+        Id: 261
+        Data: 0
+        Probability: 3.0
+        MinQuantity: 1
+        MaxQuantity: 1
