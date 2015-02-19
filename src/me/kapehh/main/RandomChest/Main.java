@@ -2,6 +2,7 @@ package me.kapehh.main.RandomChest;
 
 import me.kapehh.main.RandomChest.vchest.VirtualInventoryManager;
 import me.kapehh.main.pluginmanager.config.PluginConfig;
+import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.plugin.java.JavaPlugin;
 

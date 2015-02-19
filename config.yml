@@ -12,11 +12,11 @@ Chests:
             MinQuantity: 1
             MaxQuantity: 1
             Enchantments:
-                1:
+                Enchantment1:
                     Enchantment: ARROW_DAMAGE
                     Level: 1
                     Probability: 100
-                2:
+                Enchantment2:
                     Enchantment: ARROW_FIRE
                     Level: 2
                     Probability: 50
