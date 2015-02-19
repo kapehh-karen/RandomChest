@@ -85,6 +85,6 @@ public class Config {
         }
 
         chestManager.setChests(chestDatas);
-        System.out.println(chestManager);
+        Main.instance.chestManager = chestManager;
     }
 }

@@ -13,6 +13,15 @@ public class ChestManager {
         this.chests = new ArrayList<ChestData>();
     }
 
+    public ChestData getChestDataFromName(String name) {
+        for (ChestData chestData : chests) {
+            if (chestData.getNameChestData().equals(name)) {
+                return chestData;
+            }
+        }
+        return null;
+    }
+
     public List<ChestData> getChests() {
         return chests;
     }

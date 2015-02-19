@@ -1,5 +1,6 @@
 package me.kapehh.main.RandomChest;
 
+import me.kapehh.main.RandomChest.config.ChestManager;
 import me.kapehh.main.RandomChest.vchest.VirtualInventoryManager;
 import me.kapehh.main.pluginmanager.config.PluginConfig;
 import org.bukkit.Material;
@@ -14,6 +15,7 @@ public class Main extends JavaPlugin {
 
     public VirtualInventoryManager virtualInventoryManager;
     public PluginConfig pluginConfig;
+    public ChestManager chestManager;
 
     @Override
     public void onDisable() {

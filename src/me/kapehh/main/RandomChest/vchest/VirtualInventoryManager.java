@@ -1,5 +1,6 @@
 package me.kapehh.main.RandomChest.vchest;
 
+import me.kapehh.main.RandomChest.config.ChestData;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
@@ -12,8 +13,8 @@ import java.util.List;
 public class VirtualInventoryManager {
     List<VirtualInventory> virtualInventories = new ArrayList<VirtualInventory>();
 
-    public void add(Player player) {
-        VirtualInventory virtualInventory = new VirtualInventory(player);
+    public void add(Player player, ChestData chest) {
+        VirtualInventory virtualInventory = new VirtualInventory(player, chest);
         virtualInventories.add(virtualInventory);
         virtualInventory.show();
     }
@@ -21,7 +22,7 @@ public class VirtualInventoryManager {
     public void onClose(Inventory inventory) {
         for (VirtualInventory virtualInventory : virtualInventories) {
             if (virtualInventory.getInventory().equals(inventory)) {
-                System.out.println("HAHAHA CLOSE: " + virtualInventory);
+                //System.out.println("HAHAHA CLOSE: " + virtualInventory);
                 virtualInventories.remove(virtualInventory);
                 break;
             }
