@@ -74,6 +74,7 @@ public class ChestData {
                     ItemMeta itemMeta = itemStack.getItemMeta();
                     itemMeta.setDisplayName(item.getName());
 
+                    // TODO: Чары надо как-то вынести за пределы if-а
                     for (EnchantData ench : item.getEnchants()) {
                         // получаем текущий шанс для чара
                         chance = getRandProbability();
