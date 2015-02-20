@@ -7,6 +7,8 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Random;
+
 /**
  * Created by Karen on 18.02.2015.
  */

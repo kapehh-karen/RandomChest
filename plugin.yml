@@ -4,5 +4,5 @@ author: kapehh
 version: 1.0.0
 commands:
     randomchest:
-        usage: /<command>
-        description: randomchest
+        usage: /<command> [open <chestname> [playername] | reload]
+        description: RandomChest
