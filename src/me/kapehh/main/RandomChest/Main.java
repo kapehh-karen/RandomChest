@@ -3,6 +3,7 @@ package me.kapehh.main.RandomChest;
 import me.kapehh.main.RandomChest.config.ChestManager;
 import me.kapehh.main.RandomChest.vchest.VirtualInventoryManager;
 import me.kapehh.main.pluginmanager.config.PluginConfig;
+import me.kapehh.main.pluginmanager.logger.PluginLogger;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -18,10 +19,14 @@ public class Main extends JavaPlugin {
     public VirtualInventoryManager virtualInventoryManager;
     public PluginConfig pluginConfig;
     public ChestManager chestManager;
+    public PluginLogger fileLogger;
+    public boolean debug = false;
 
     @Override
     public void onDisable() {
-        super.onDisable();
+        fileLogger.shutDown();
+
+        instance = null;
     }
 
     @Override
@@ -40,6 +45,9 @@ public class Main extends JavaPlugin {
         pluginConfig.addEventClasses(new Config());
         pluginConfig.setup();
         pluginConfig.loadData();
+
+        fileLogger = new PluginLogger(this, "logs.txt");
+        fileLogger.setup();
 
         getCommand("randomchest").setExecutor(new CommandExecutor());
         getServer().getPluginManager().registerEvents(new Listener(), this);

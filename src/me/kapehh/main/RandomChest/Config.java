@@ -86,5 +86,6 @@ public class Config {
 
         chestManager.setChests(chestDatas);
         Main.instance.chestManager = chestManager;
+        Main.instance.debug = cfg.getBoolean("Debug");
     }
 }

@@ -43,55 +43,38 @@ public class ChestData {
 
         i = 0;
         for (ItemData item : items) {
-            //System.out.println("===START===");
-
             // получаем текущий шанс для итема
             chance = getRandProbability();
-
-            //System.out.println("CURRENT CHANCE: " + chance + ", chance of item (" + item.getNameItemData() + "): " + item.getProbability());
-
             // если не повезло, то обида и едем дальше
             if (chance >= item.getProbability()) continue;
-
             // получаем случайное количество от минимального до максимального
             count = getRandQuantity(item);
 
-            //System.out.println("COUNT BETWEEN " + item.getMinQuantity() + " AND " + item.getMaxQuantity() + " == " + count);
-
             do {
-                //System.out.println("===START===");
-
                 // чтоб не вылететь за пределы сундука
                 if (i >= VirtualInventory.SIZE_CHEST) break;
 
                 // берем меньшее из максимального размера в стаке и того что ещё осталось выдать
                 tmp = Math.min(item.getId().getMaxStackSize(), count);
 
-                //System.out.println("tmp = " + tmp + ", count = " + count + ", max size = " + item.getId().getMaxStackSize());
-
                 itemStack = new ItemStack(item.getId(), tmp, (short) item.getData());
+                ItemMeta itemMeta = itemStack.getItemMeta();
+
                 if (item.getName() != null) {
-                    ItemMeta itemMeta = itemStack.getItemMeta();
                     itemMeta.setDisplayName(item.getName());
-
-                    // TODO: Чары надо как-то вынести за пределы if-а
-                    for (EnchantData ench : item.getEnchants()) {
-                        // получаем текущий шанс для чара
-                        chance = getRandProbability();
-
-                        if (chance >= ench.getProbability()) continue;
-
-                        itemMeta.addEnchant(ench.getEnchantment(), ench.getLevel(), true);
-                    }
-
-                    itemStack.setItemMeta(itemMeta);
                 }
 
+                for (EnchantData ench : item.getEnchants()) {
+                    // получаем текущий шанс для чара
+                    chance = getRandProbability();
+                    if (chance >= ench.getProbability()) continue;
+                    itemMeta.addEnchant(ench.getEnchantment(), ench.getLevel(), true);
+                }
+
+                itemStack.setItemMeta(itemMeta);
                 itemStacks[i] = itemStack;
                 i++;
                 count -= tmp;
-
-                //System.out.println("count = " + count);
             } while (count > 0);
         }
 
