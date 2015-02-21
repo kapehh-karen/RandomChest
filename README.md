@@ -3,9 +3,12 @@
 
 Команды:
 <ul>
-<li>/randomchest open <chestname> [playername]</li>
-<li>/randomchest reload</li>
+<li><code>/randomchest open <b>имя_сундука</b> [имя_игрока]</code> - открывает игроку <b>имя_игрока</b> (не обязательный параметр) сундук</li>
+<li><code>/randomchest reload</code> - перезагружает плагин</li>
 </ul>
+
+Права:
+<code>randomchest.use.[имя_сундука]</code> - права на открытие сундука
 
 Пример конфига:
 <pre>
