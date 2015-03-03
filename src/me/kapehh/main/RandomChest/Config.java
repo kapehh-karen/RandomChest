@@ -40,13 +40,14 @@ public class Config {
 
         for (String chest : chests) {
             ConfigurationSection inChest = chestSection.getConfigurationSection(chest);
-            Set<String> items = inChest.getKeys(false);
+            ConfigurationSection inContents = inChest.getConfigurationSection("Contents");
+            Set<String> items = inContents.getKeys(false);
 
-            ChestData chestData = new ChestData(chest);
+            ChestData chestData = new ChestData(chest, inChest.getString("Name", ""), inChest.getBoolean("Drop", false));
             List<ItemData> itemDatas = new ArrayList<ItemData>();
 
             for (String item : items) {
-                ConfigurationSection inItem = inChest.getConfigurationSection(item);
+                ConfigurationSection inItem = inContents.getConfigurationSection(item);
                 ConfigurationSection enchantsSection = inItem.getConfigurationSection("Enchantments");
 
                 ItemData itemData = new ItemData(

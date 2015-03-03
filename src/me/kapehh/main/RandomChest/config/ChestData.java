@@ -18,11 +18,15 @@ public class ChestData {
     private static final Random rand = new Random();
 
     String nameChestData;
+    String name;
+    boolean drop;
     List<ItemData> items;
 
-    public ChestData(String nameChestData) {
+    public ChestData(String nameChestData, String name, boolean drop) {
         this.nameChestData = nameChestData;
         items = new ArrayList<ItemData>();
+        this.name = name;
+        this.drop = drop;
     }
 
     private double getRandProbability() {
@@ -81,6 +85,22 @@ public class ChestData {
         return itemStacks;
     }
 
+    public boolean isDrop() {
+        return drop;
+    }
+
+    public void setDrop(boolean drop) {
+        this.drop = drop;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getNameChestData() {
         return nameChestData;
     }
@@ -101,6 +121,8 @@ public class ChestData {
     public String toString() {
         return "ChestData{" +
                 "nameChestData='" + nameChestData + '\'' +
+                ", name='" + name + '\'' +
+                ", drop=" + drop +
                 ", items=" + items +
                 '}';
     }

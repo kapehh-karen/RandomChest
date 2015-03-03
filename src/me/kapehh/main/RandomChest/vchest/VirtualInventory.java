@@ -22,7 +22,7 @@ public class VirtualInventory {
     ItemStack[] contents;
 
     public VirtualInventory(Player player, ChestData chest) {
-        inventory = Bukkit.createInventory(null, SIZE_CHEST, chest.getNameChestData());
+        inventory = Bukkit.createInventory(null, SIZE_CHEST, chest.getName());
         contents = chest.getContents();
         inventory.setContents(contents);
         this.player = player;
@@ -49,13 +49,11 @@ public class VirtualInventory {
     }
 
     public void drop() {
-        //Item dropped;
+        if (!chestData.isDrop()) return;
         contents = inventory.getContents();
         for (ItemStack itemStack : contents) {
             if (itemStack == null || itemStack.getType().equals(Material.AIR)) continue;
             player.getWorld().dropItem(player.getLocation(), itemStack);
-            //dropped.setVelocity(player.getLocation().getDirection());
-            //player.
         }
     }
 
