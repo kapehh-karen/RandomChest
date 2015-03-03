@@ -23,6 +23,7 @@ public class VirtualInventoryManager {
         for (VirtualInventory virtualInventory : virtualInventories) {
             if (virtualInventory.getInventory().equals(inventory)) {
                 //System.out.println("HAHAHA CLOSE: " + virtualInventory);
+                virtualInventory.drop();
                 virtualInventories.remove(virtualInventory);
                 break;
             }

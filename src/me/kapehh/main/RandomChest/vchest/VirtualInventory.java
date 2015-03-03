@@ -4,6 +4,7 @@ import me.kapehh.main.RandomChest.Main;
 import me.kapehh.main.RandomChest.config.ChestData;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
@@ -45,6 +46,17 @@ public class VirtualInventory {
             );
         }
         player.openInventory(inventory);
+    }
+
+    public void drop() {
+        //Item dropped;
+        contents = inventory.getContents();
+        for (ItemStack itemStack : contents) {
+            if (itemStack == null || itemStack.getType().equals(Material.AIR)) continue;
+            player.getWorld().dropItem(player.getLocation(), itemStack);
+            //dropped.setVelocity(player.getLocation().getDirection());
+            //player.
+        }
     }
 
     public void close() {
