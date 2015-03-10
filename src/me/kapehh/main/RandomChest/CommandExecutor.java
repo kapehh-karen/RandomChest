@@ -42,8 +42,11 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
 
             if ((args.length < 3) && (commandSender instanceof Player)) {
                 player = (Player) commandSender;
-            } else if (args.length >= 3) {
+            } else if ((args.length >= 3) && commandSender.isOp()) {
                 player = getOnlinePlayer(args[2]);
+            } else {
+                commandSender.sendMessage(ChatColor.RED + "Forbidden!");
+                return true;
             }
 
             if (player == null) {
